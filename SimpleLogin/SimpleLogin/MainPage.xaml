@@ -17,6 +17,4 @@
             CornerRadius="8    "
             Clicked="Login" HorizontalOptions="FillAndExpand"></Button>
     </StackLayout>
-
-
 </ContentPage>

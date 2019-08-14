@@ -8,8 +8,6 @@ using Xamarin.Forms;
 
 namespace SimpleLogin
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
@@ -18,23 +16,15 @@ namespace SimpleLogin
             InitializeComponent();
         }
 
-        ///*async */void OnClicked(object ob, EventArgs ar)
-        //{
-        //    var button = (Button)ob;
-        //    textLabel.Text = textBar.Text;
-        //    textLabel.TextColor = button.BackgroundColor;
-        //    //await DisplayAlert("Hello", "Hello2", "Ok");
-        //}
-
         async void Login(object ob, EventArgs ar)
         {
             string username = usernameField.Text;
             string password = passwordField.Text;
             
-            if (username == null || username == "")
+            if (String.IsNullOrEmpty(username))
             {
                 await DisplayAlert("Error", "User field cannot be empty", "Ok");
-            } else if (password == null || password == "")
+            } else if (String.IsNullOrEmpty(password))
             {
                 await DisplayAlert("Error", "Password field cannot be empty", "Ok");
             } else
