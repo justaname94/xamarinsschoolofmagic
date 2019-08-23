@@ -6451,10 +6451,13 @@ namespace extrapoints_1_1.Droid
 			public const int order = 2131165500;
 			
 			// aapt resource value: 0x7F07013D
-			public const int tooltip_frame_dark = 2131165501;
+			public const int review = 2131165501;
 			
 			// aapt resource value: 0x7F07013E
-			public const int tooltip_frame_light = 2131165502;
+			public const int tooltip_frame_dark = 2131165502;
+			
+			// aapt resource value: 0x7F07013F
+			public const int tooltip_frame_light = 2131165503;
 			
 			static Drawable()
 			{

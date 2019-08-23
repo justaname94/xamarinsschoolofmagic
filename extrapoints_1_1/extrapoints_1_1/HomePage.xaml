@@ -45,13 +45,13 @@
                 <Frame Grid.Row="1" Grid.Column="0" Opacity="0.8">
                     <StackLayout>
                         <Image Source="menu.png" WidthRequest="120"></Image>
-                        <Label Text="Locations" HorizontalOptions="Center"></Label>
+                        <Label Text="Menu" HorizontalOptions="Center"></Label>
                     </StackLayout>
                 </Frame>
                 <Frame Grid.Row="1" Grid.Column="1" Opacity="0.8">
                     <StackLayout>
-                        <Image Source="menu.png" WidthRequest="120"></Image>
-                        <Label Text="Locations" HorizontalOptions="Center"></Label>
+                        <Image Source="review.png" WidthRequest="120"></Image>
+                        <Label Text="Leave a review" HorizontalOptions="Center"></Label>
                     </StackLayout>
                 </Frame>
             </Grid>
