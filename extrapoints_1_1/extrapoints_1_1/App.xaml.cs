@@ -10,7 +10,8 @@ namespace extrapoints_1_1
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new HomePage());
+
         }
 
         protected override void OnStart()

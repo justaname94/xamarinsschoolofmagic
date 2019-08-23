@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="extrapoints_1_1.HomePage"
+             BackgroundImageSource="background.jpg">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Burger King" TextColor="White" HorizontalOptions="StartAndExpand" FontSize="25" VerticalOptions="Center"></Label>
+            <Button Text="info" Clicked="Info" FontAttributes="Italic" HorizontalOptions="End"></Button>
+        </StackLayout>
+    </NavigationPage.TitleView> 
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="30" >
+            <Label Text="Welcome to Burger King's mobile order service. We'll be 
+                        glad to help you in whatever you need"
+             TextColor="White"
+             HorizontalOptions="CenterAndExpand" 
+             WidthRequest="250" 
+             FontSize="30"></Label>
+            <Grid HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="0" Grid.Column="0" Opacity="0.8">
+                    <StackLayout>
+                        <Image Source="order.png" WidthRequest="120"></Image>
+                        <Label Text="Place order" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" Opacity="0.8">
+                    <StackLayout>
+                        <Image Source="location.png" WidthRequest="120"></Image>
+                        <Label Text="Locations" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" Opacity="0.8">
+                    <StackLayout>
+                        <Image Source="menu.png" WidthRequest="120"></Image>
+                        <Label Text="Locations" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Opacity="0.8">
+                    <StackLayout>
+                        <Image Source="menu.png" WidthRequest="120"></Image>
+                        <Label Text="Locations" HorizontalOptions="Center"></Label>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
