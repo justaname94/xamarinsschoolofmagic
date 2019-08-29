@@ -8,13 +8,13 @@
 
     <StackLayout Padding="20" Spacing="30" VerticalOptions="Center">
         <Image Source="logo_intec.png"/>
-        <Entry HorizontalOptions="FillAndExpand" x:Name="usernameField" Placeholder="User"/>
-        <Entry HorizontalOptions="FillAndExpand" x:Name="passwordField" Placeholder="Password" IsPassword="True" />
+        <Entry Text="{Binding person.Username, Mode=TwoWay}" HorizontalOptions="FillAndExpand" x:Name="usernameField" Placeholder="User"/>
+        <Entry Text="{Binding person.Password, Mode=TwoWay}" HorizontalOptions="FillAndExpand" x:Name="passwordField" Placeholder="Password" IsPassword="True" />
         <Button Text="Login"
             FontSize="Medium"
             BackgroundColor="Red"
             TextColor="White"
             CornerRadius="8    "
-            Clicked="Login" HorizontalOptions="FillAndExpand"></Button>
+            Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"></Button>
     </StackLayout>
 </ContentPage>
