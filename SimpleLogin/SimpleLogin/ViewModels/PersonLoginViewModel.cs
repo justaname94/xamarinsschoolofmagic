@@ -1,35 +1,42 @@
 ﻿using SimpleLogin.Models;
+using SimpleLogin.Views;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace SimpleLogin.ViewModels
 {
-    class PersonViewModel
+    class PersonLoginViewModel : INotifyPropertyChanged
     {
         public ICommand LoginCommand { get; set; }
         public Person person { get; set; }
-        public PersonViewModel()
+
+        public String Errors { get; set; }
+        public PersonLoginViewModel()
         {
             person = new Person();
             LoginCommand = new Command(async () =>
             {
                 if (String.IsNullOrEmpty(person.Username))
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "User field cannot be empty", "Ok");
+                    Errors = "User field cannot be empty";
                 }
                 else if (String.IsNullOrEmpty(person.Password))
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Password field cannot be empty", "Ok");
+                    Errors = "Password field cannot be empty";
                 }
                 else
                 {
-                    string welcomeMsg = String.Format("Hello {0}", person.Username);
-                    await App.Current.MainPage.DisplayAlert("Welcome", welcomeMsg, "Ok");
+
+                    App.Current.MainPage = new NavigationPage(new MainTabPageView());
+                    await App.Current.MainPage.Navigation.PopToRootAsync(true);
                 }
             });
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

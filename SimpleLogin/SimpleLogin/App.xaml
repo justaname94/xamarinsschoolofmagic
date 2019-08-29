@@ -6,6 +6,15 @@
              mc:Ignorable="d"
              x:Class="SimpleLogin.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Red" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
+

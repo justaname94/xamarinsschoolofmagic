@@ -1,4 +1,5 @@
 ﻿using SimpleLogin.ViewModels;
+using SimpleLogin.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +12,19 @@ using Xamarin.Forms;
 namespace SimpleLogin
 {
     [DesignTimeVisible(false)]
-    public partial class MainPage : ContentPage
+    public partial class PersonLoginView : ContentPage
     {
-        public MainPage()
+        public PersonLoginView()
         {
             InitializeComponent();
-            BindingContext = new PersonViewModel();
+            BindingContext = new PersonLoginViewModel();
             
         }
 
+        async private void SendToRegisterView(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PersonRegisterView());   
+        }
 
-        // async void Login(object ob, EventArgs ar)
-        // {
-            
-
-        // } 
-    }
+            }
 }

@@ -4,17 +4,19 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SimpleLogin.MainPage">
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SimpleLogin.PersonLoginView">
 
-    <StackLayout Padding="20" Spacing="30" VerticalOptions="Center">
+    <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
         <Image Source="logo_intec.png"/>
         <Entry Text="{Binding person.Username, Mode=TwoWay}" HorizontalOptions="FillAndExpand" x:Name="usernameField" Placeholder="User"/>
         <Entry Text="{Binding person.Password, Mode=TwoWay}" HorizontalOptions="FillAndExpand" x:Name="passwordField" Placeholder="Password" IsPassword="True" />
         <Button Text="Login"
-            FontSize="Medium"
-            BackgroundColor="Red"
-            TextColor="White"
-            CornerRadius="8    "
-            Command="{Binding LoginCommand}" HorizontalOptions="FillAndExpand"></Button>
+            Command="{Binding LoginCommand}"></Button>
+        <Button Text="Register" 
+                BackgroundColor="Transparent" 
+                TextColor="Red"
+                Clicked="SendToRegisterView"></Button>
+        <Label Text="{Binding Errors}" TextColor="Red" TextDecorations="Underline" HorizontalOptions="CenterAndExpand" x:Name="errorField"/>
     </StackLayout>
 </ContentPage>
