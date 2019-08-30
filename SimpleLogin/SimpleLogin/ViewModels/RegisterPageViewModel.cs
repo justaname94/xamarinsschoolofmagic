@@ -9,33 +9,33 @@ using Xamarin.Forms;
 
 namespace SimpleLogin.ViewModels
 {
-    class PersonRegisterViewModel : INotifyPropertyChanged
+    class RegisterPageViewModel : INotifyPropertyChanged
     {
         public ICommand RegisterCommand { get; set; }
-        public Person person { get; set; }
+        public Person Person { get; set; }
 
-        public String Password2 { get; set; }
+        public string Password2 { get; set; }
 
-        public String Errors { get; set; }
-        public PersonRegisterViewModel()
+        public string Errors { get; set; }
+        public RegisterPageViewModel()
         {
-            person = new Person();
+            Person = new Person();
             RegisterCommand = new Command(async () =>
             {
-            if (String.IsNullOrEmpty(person.Username) ||
-                String.IsNullOrEmpty(person.Email) ||
-                String.IsNullOrEmpty(person.Password) ||
+            if (String.IsNullOrEmpty(Person.Username) ||
+                String.IsNullOrEmpty(Person.Email) ||
+                String.IsNullOrEmpty(Person.Password) ||
                 String.IsNullOrEmpty(Password2))
             {
                 Errors = "All fields mut be filled";
             }
-            else if (person.Password != Password2)
+            else if (Person.Password != Password2)
             {
                 Errors = "Passwords fields don't match";
             }
             else
             {
-                 await App.Current.MainPage.Navigation.PushAsync(new PersonLoginView());
+                 await App.Current.MainPage.Navigation.PushAsync(new LoginView());
             }
             });
         }

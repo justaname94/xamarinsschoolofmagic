@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace SimpleLogin.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PersonRegisterView : ContentPage
+    public partial class RegisterView : ContentPage
     {
-        public PersonRegisterView()
+        public RegisterView()
         {
             InitializeComponent();
-            BindingContext = new PersonRegisterViewModel();
+            BindingContext = new RegisterPageViewModel();
         }
     }
 }

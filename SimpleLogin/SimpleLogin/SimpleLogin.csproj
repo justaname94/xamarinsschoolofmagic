@@ -16,8 +16,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\PersonLoginView.xaml.cs">
-      <DependentUpon>PersonLoginView.xaml</DependentUpon>
+    <Compile Update="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -25,7 +28,7 @@
     <EmbeddedResource Update="Views\MainTabPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\PersonRegisterView.xaml">
+    <EmbeddedResource Update="Views\RegisterView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

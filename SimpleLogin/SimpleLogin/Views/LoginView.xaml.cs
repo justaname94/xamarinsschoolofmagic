@@ -12,18 +12,18 @@ using Xamarin.Forms;
 namespace SimpleLogin
 {
     [DesignTimeVisible(false)]
-    public partial class PersonLoginView : ContentPage
+    public partial class LoginView : ContentPage
     {
-        public PersonLoginView()
+        public LoginView()
         {
             InitializeComponent();
-            BindingContext = new PersonLoginViewModel();
+            BindingContext = new LoginPageViewModel();
             
         }
 
         async private void SendToRegisterView(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new PersonRegisterView());   
+            await Navigation.PushAsync(new RegisterView());   
         }
 
             }

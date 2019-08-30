@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="SimpleLogin.Views.MainTabPageView">
   <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" IconImageSource="accesbility" />
+  <ContentPage Title="Tab 1" IconImageSource="accesibility" />
     <ContentPage Title="Tab 2" IconImageSource="home"/>
     <ContentPage Title="Tab 3" IconImageSource="home"/>
 </TabbedPage>

@@ -9,28 +9,27 @@ using Xamarin.Forms;
 
 namespace SimpleLogin.ViewModels
 {
-    class PersonLoginViewModel : INotifyPropertyChanged
+    class LoginPageViewModel : INotifyPropertyChanged
     {
         public ICommand LoginCommand { get; set; }
-        public Person person { get; set; }
+        public Person Person { get; set; }
 
-        public String Errors { get; set; }
-        public PersonLoginViewModel()
+        public string Errors { get; set; }
+        public LoginPageViewModel()
         {
-            person = new Person();
+            Person = new Person();
             LoginCommand = new Command(async () =>
             {
-                if (String.IsNullOrEmpty(person.Username))
+                if (String.IsNullOrEmpty(Person.Username))
                 {
                     Errors = "User field cannot be empty";
                 }
-                else if (String.IsNullOrEmpty(person.Password))
+                else if (String.IsNullOrEmpty(Person.Password))
                 {
                     Errors = "Password field cannot be empty";
                 }
                 else
                 {
-
                     App.Current.MainPage = new NavigationPage(new MainTabPageView());
                     await App.Current.MainPage.Navigation.PopToRootAsync(true);
                 }

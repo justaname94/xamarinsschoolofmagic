@@ -10,7 +10,7 @@ namespace SimpleLogin
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new PersonLoginView());
+            MainPage = new NavigationPage(new LoginView());
         }
 
         protected override void OnStart()
