@@ -17,6 +17,8 @@ namespace practice_3.Models
 
         public string Email { get; set; }
 
+        public string PicturePath { get; set; }
+
         public Contact() { }
         public Contact(string firstName, string number)
         {

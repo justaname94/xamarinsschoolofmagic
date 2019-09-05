@@ -8,16 +8,22 @@
              NavigationPage.HasNavigationBar="True"
              x:Class="practice_3.Views.EditContactView">
     <ContentPage.Content>
-        <StackLayout Padding="20" Spacing="20">
-            <Entry Text="{Binding contact.FirstName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="First name"/>
-            <Entry Text="{Binding contact.LastName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Last Name"/>
-            <Entry Text="{Binding contact.Company, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Company"/>
-            <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
-            <Entry Text="{Binding contact.Email, Mode=TwoWay}" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email"/>
-            <Button Text="Add/Edit Contact"
-                    BackgroundColor="#0E60A8"
+        <ScrollView>
+            <StackLayout Padding="10" Spacing="20">
+                <Image Source="{Binding ProfileImg}" HeightRequest="200" WidthRequest="200"></Image>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Take a picture" Command="{Binding TakePicture}"></Button>
+                    <Button Text="Choose from gallery" Command="{Binding PickPictureFromGallery}"></Button>
+                </StackLayout>
+                <Entry Text="{Binding contact.FirstName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="First name"/>
+                <Entry Text="{Binding contact.LastName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Last Name"/>
+                <Entry Text="{Binding contact.Company, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Company"/>
+                <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
+                <Entry Text="{Binding contact.Email, Mode=TwoWay}" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email"/>
+                <Button Text="Add/Edit Contact"
                     HorizontalOptions="Center"
             Command="{Binding EditContactCommand}"></Button>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

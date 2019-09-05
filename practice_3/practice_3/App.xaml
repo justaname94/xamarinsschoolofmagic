@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
-                <Setter Property="BackgroundColor" Value="Red" />
+                <Setter Property="BackgroundColor" Value="#0E60A8" />
                 <Setter Property="CornerRadius" Value="8" />
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
