@@ -6,13 +6,18 @@ namespace practice_3.Models
 {
     public class Contact
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+        public string Company { get; set; }
         public string Number { get; set; }
 
+        public string Email { get; set; }
+
         public Contact() { }
-        public Contact(string name, string number)
+        public Contact(string firstName, string number)
         {
-            this.Name = name;
+            this.FirstName = firstName;
             this.Number = number;
         }
     }

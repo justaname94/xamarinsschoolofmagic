@@ -10,7 +10,10 @@
         <ToolbarItem Name="Add" Clicked="SendToAddContactView" />
     </ContentPage.ToolbarItems>
     <StackLayout Padding="5" Spacing="10" VerticalOptions="Center">
-        <ListView ItemsSource="{Binding Contacts}" HasUnevenRows="True" x:Name="contactsList">
+        <ListView ItemsSource="{Binding Contacts}"  
+                  ItemTapped="ContactsList_ItemTapped"
+                  HasUnevenRows="True" 
+                  x:Name="contactsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -28,9 +31,14 @@
                                      Padding="10" 
                                      HorizontalOptions="FillAndExpand" 
                                      VerticalOptions="EndAndExpand">
-                            <Label Text="{Binding Name}" 
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}" 
                                    FontSize="20" 
                                    TextColor="#000"></Label>
+                                <Label Text="{Binding LastName}" 
+                                   FontSize="20" 
+                                   TextColor="#000"></Label>
+                            </StackLayout>
                             <Label Text="{Binding Number}" 
                                    FontSize="15"></Label>
                         </StackLayout>

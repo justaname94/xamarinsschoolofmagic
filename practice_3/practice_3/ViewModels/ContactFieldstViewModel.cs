@@ -7,13 +7,13 @@ using Xamarin.Forms;
 
 namespace practice_3.ViewModels
 {
-    class EditContactViewModel
+    class ContactFieldsViewModel
     {
         public ICommand EditContactCommand { get; set; }
 
         public Contact contact { get; set; }
             
-        public EditContactViewModel()
+        public ContactFieldsViewModel()
         {
             contact = new Contact();
 
@@ -26,7 +26,7 @@ namespace practice_3.ViewModels
 
         }
 
-        public EditContactViewModel(Contact current_contact)
+        public ContactFieldsViewModel(Contact current_contact)
         {
             contact = current_contact;
 

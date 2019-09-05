@@ -9,8 +9,11 @@
              x:Class="practice_3.Views.EditContactView">
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
-            <Entry Text="{Binding contact.Name, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Name"/>
+            <Entry Text="{Binding contact.FirstName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="First name"/>
+            <Entry Text="{Binding contact.LastName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Last Name"/>
+            <Entry Text="{Binding contact.Company, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Company"/>
             <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
+            <Entry Text="{Binding contact.Email, Mode=TwoWay}" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email"/>
             <Button Text="Add/Edit Contact"
                     BackgroundColor="#0E60A8"
                     HorizontalOptions="Center"

@@ -22,5 +22,8 @@
     <Compile Update="Views\EditContactView.xaml.cs">
       <DependentUpon>EditContactView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\ContactDetail.xaml.cs">
+      <DependentUpon>ContactDetail.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

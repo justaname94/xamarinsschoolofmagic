@@ -57,8 +57,6 @@ namespace practice_3.ViewModels
                 this.Contacts[idx] = contact;
             }));
         }
-
-       
     }
 }
 
