@@ -22,7 +22,7 @@ namespace practice_3
 
         async private void SendToAddContactView(object sender, EventArgs e)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new AddContactView());
+            await App.Current.MainPage.Navigation.PushAsync(new EditContactView());
         }
     }
 }

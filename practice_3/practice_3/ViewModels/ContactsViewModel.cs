@@ -1,4 +1,5 @@
 ﻿using practice_3.Models;
+using practice_3.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -15,6 +16,8 @@ namespace practice_3.ViewModels
 
         public ICommand EditContact { get; set; }
 
+        public ICommand ContactOptions { get; set; }
+
         public ContactsViewModel()
         {
             Contacts = new ObservableCollection<Contact> {
@@ -29,11 +32,33 @@ namespace practice_3.ViewModels
                 this.Contacts.Remove(contact);
             });
 
+            ContactOptions = new Command<Contact>(async (contact) =>
+            {
+                string action = await App.Current.MainPage.DisplayActionSheet(null, "Cancel", null, "Call " + contact.Number, "Edit");
+                if (action == "Edit")
+                {
+                    await App.Current.MainPage.Navigation.PushAsync(new EditContactView(contact));
+                }
+                else
+                {
+                    Device.OpenUri(new Uri(String.Format("tel:{0}", contact.Number)));
+                }
+            });
+
+            // Subscriptions
             MessagingCenter.Subscribe<string, Contact>("Contacts", "AddContact", ((sender, contact) =>
             {
                 this.Contacts.Add(contact);
             }));
+
+            MessagingCenter.Subscribe<string, Contact>("Contacts", "EditContact", ((sender, contact) =>
+            {
+                int idx = this.Contacts.IndexOf(contact);
+                this.Contacts[idx] = contact;
+            }));
         }
+
+       
     }
 }
 

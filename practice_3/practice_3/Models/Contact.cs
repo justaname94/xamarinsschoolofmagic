@@ -4,7 +4,7 @@ using System.Text;
 
 namespace practice_3.Models
 {
-    class Contact
+    public class Contact
     {
         public string Name { get; set; }
         public string Number { get; set; }

@@ -15,6 +15,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
+                            <MenuItem Command="{Binding Path=BindingContext.ContactOptions, Source={x:Reference contactsList}}" 
+                                       CommandParameter="{Binding .}"
+                                      Text="More"></MenuItem>
                             <MenuItem Command="{Binding Path=BindingContext.EditContact, Source={x:Reference contactsList}}" 
                                        CommandParameter="{Binding .}"
                                       Text="Delete"></MenuItem>

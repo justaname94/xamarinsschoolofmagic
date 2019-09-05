@@ -6,15 +6,15 @@
              mc:Ignorable="d"
              Title="New Contact"
              NavigationPage.HasNavigationBar="True"
-             x:Class="practice_3.Views.AddContactView">
+             x:Class="practice_3.Views.EditContactView">
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
             <Entry Text="{Binding contact.Name, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Name"/>
             <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
-            <Button Text="Add Contact"
+            <Button Text="Add/Edit Contact"
                     BackgroundColor="#0E60A8"
                     HorizontalOptions="Center"
-            Command="{Binding AddContactCommand}"></Button>
+            Command="{Binding EditContactCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
