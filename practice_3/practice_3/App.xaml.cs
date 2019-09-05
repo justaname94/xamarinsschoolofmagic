@@ -1,5 +1,6 @@
 ﻿using practice_3;
 using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,6 +8,21 @@ namespace practice_3
 {
     public partial class App : Application
     {
+
+        static Database database;
+
+        public static Database Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Contacts.db3"));
+                }
+                return database;
+            }
+        }
+
         public App()
         {
             InitializeComponent();

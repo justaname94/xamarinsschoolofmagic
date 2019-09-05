@@ -12,9 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace practice_3.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ContactDetail : ContentPage
+    public partial class ContactDetailView : ContentPage
     {
-        public ContactDetail(Contact contact)
+        public ContactDetailView(Contact contact)
         {
             InitializeComponent();
             BindingContext = new ContactFieldsViewModel(contact);

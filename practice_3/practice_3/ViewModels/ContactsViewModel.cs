@@ -3,16 +3,28 @@ using practice_3.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace practice_3.ViewModels
 {
-    class ContactsViewModel
+    class ContactsViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Contact> Contacts { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+
+        async public static Task<ContactsViewModel> ContactsViewModelAsync()
+        {
+            List<Contact> tmpData = await App.Database.GetPeopleAsync();
+            ObservableCollection<Contact> contactsObv = new ObservableCollection<Contact>(tmpData);
+            return new ContactsViewModel();
+        }
 
         public ICommand EditContact { get; set; }
 
@@ -20,15 +32,17 @@ namespace practice_3.ViewModels
 
         public ContactsViewModel()
         {
-            Contacts = new ObservableCollection<Contact> {
-                new Contact("Roniel Valdez", "8296296344"),
-                new Contact("Albin Frias", "8297431205"),
-                new Contact("Gilbert Batista", "8293448895")
-            };
-
+            // Load all the contacts from the db
+            Task.Run(async () =>
+            {
+                List<Contact> tmpData = await App.Database.GetPeopleAsync();
+                ObservableCollection<Contact> contactsObv = new ObservableCollection<Contact>(tmpData);
+                Contacts = contactsObv;
+            });
 
             EditContact = new Command<Contact>(async (Contact contact) =>
             {
+                await App.Database.DeletePersonAsync(contact);
                 this.Contacts.Remove(contact);
             });
 
@@ -46,13 +60,17 @@ namespace practice_3.ViewModels
             });
 
             // Subscriptions
-            MessagingCenter.Subscribe<string, Contact>("Contacts", "AddContact", ((sender, contact) =>
+            MessagingCenter.Subscribe<string, Contact>("Contacts", "AddContact", (async(sender, contact) =>
             {
+
+                await App.Database.SavePersonAsync(contact);
+
                 this.Contacts.Add(contact);
             }));
 
-            MessagingCenter.Subscribe<string, Contact>("Contacts", "EditContact", ((sender, contact) =>
+            MessagingCenter.Subscribe<string, Contact>("Contacts", "EditContact", (async (sender, contact) =>
             {
+                await App.Database.UpdatePersonAsync(contact);
                 int idx = this.Contacts.IndexOf(contact);
                 this.Contacts[idx] = contact;
             }));

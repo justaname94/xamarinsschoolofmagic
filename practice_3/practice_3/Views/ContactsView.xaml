@@ -40,7 +40,7 @@
                                    TextColor="#000"></Label>
                             </StackLayout>
                             <Label Text="{Binding Number}" 
-                                   FontSize="15"></Label>
+                                   FontSize="20"></Label>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

@@ -17,8 +17,8 @@ namespace practice_3
     {
         public ContactsView()
         {
-            BindingContext = new ContactsViewModel();
             InitializeComponent();
+            BindingContext = new ContactsViewModel();
         }
 
         async private void SendToAddContactView(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace practice_3
 
         async private void ContactsList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            await App.Current.MainPage.Navigation.PushAsync(new ContactDetail((Contact)e.Item));
+            await App.Current.MainPage.Navigation.PushAsync(new ContactDetailView((Contact)e.Item));
         }
     }
 }

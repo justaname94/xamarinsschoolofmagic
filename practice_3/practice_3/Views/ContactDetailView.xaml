@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              Title="Contact Details"
              NavigationPage.HasNavigationBar="True"
-             x:Class="practice_3.Views.ContactDetail">
+             x:Class="practice_3.Views.ContactDetailView">
     <ContentPage.Content>
         <StackLayout Padding="20" Spacing="20">
             <Label Text="First Name" FontSize="18" TextColor="#000"></Label>
@@ -18,7 +18,7 @@
             <Label Text="Phone number" FontSize="20" TextColor="#000"></Label>
             <Label Text="{Binding contact.Number, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
             <Label Text="Email" FontSize="20" TextColor="#000"></Label>
-            <Label Text="{Binding contact.Email, Mode=TwoWay}" HorizontalOptions="FillAndExpand"/>
+            <Label Text="{Binding contact.Email, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
