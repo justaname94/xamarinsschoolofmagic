@@ -11,7 +11,7 @@ namespace practice_3
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginView());
+            MainPage = new NavigationPage(new ContactsView());
         }
 
         protected override void OnStart()

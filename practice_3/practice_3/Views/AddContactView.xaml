@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="New Contact"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="practice_3.Views.AddContactView">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+            <Entry Text="{Binding contact.Name, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Name"/>
+            <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
+            <Button Text="Add Contact"
+                    BackgroundColor="#0E60A8"
+                    HorizontalOptions="Center"
+            Command="{Binding AddContactCommand}"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

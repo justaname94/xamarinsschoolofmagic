@@ -31,7 +31,7 @@ namespace practice_3.ViewModels
                 }
                 else
                 {
-                    App.Current.MainPage = new NavigationPage(new MainPageView());
+                    App.Current.MainPage = new NavigationPage(new ContactsView());
                     await App.Current.MainPage.Navigation.PopToRootAsync(true);
                 }
             });
