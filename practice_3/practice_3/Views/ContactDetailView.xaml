@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Contact Details"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="practice_3.Views.ContactDetailView">
+    <ContentPage.Content>
+        <StackLayout Padding="10,5,10,0" Spacing="10">
+            <Image Source="{Binding ProfileImg}" HeightRequest="200" WidthRequest="200"></Image>
+            <Label Text="First Name" FontSize="16" TextColor="#000"></Label>
+            <Label Text="{Binding contact.FirstName, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Last Name" FontSize="16" TextColor="#000"></Label>
+            <Label Text="{Binding contact.LastName, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Company" FontSize="16" TextColor="#000"></Label>
+            <Label Text="{Binding contact.Company, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Phone number" FontSize="16" TextColor="#000"></Label>
+            <Label Text="{Binding contact.Number, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
+            <Label Text="Email" FontSize="16" TextColor="#000"></Label>
+            <Label Text="{Binding contact.Email, Mode=TwoWay}" FontSize="20" HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

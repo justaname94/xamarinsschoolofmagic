@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Contacts"
+             x:Class="practice_3.ContactsView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Add" Clicked="SendToAddContactView"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout Padding="5" Spacing="10" VerticalOptions="Center">
+            <ListView ItemsSource="{Binding Contacts}"  
+                  ItemTapped="ContactsList_ItemTapped"
+                  HasUnevenRows="True" 
+                  x:Name="contactsList">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Command="{Binding Path=BindingContext.ContactOptions, Source={x:Reference contactsList}}" 
+                                       CommandParameter="{Binding .}"
+                                      Text="More"></MenuItem>
+                                <MenuItem Command="{Binding Path=BindingContext.EditContact, Source={x:Reference contactsList}}" 
+                                       CommandParameter="{Binding .}"
+                                      Text="Delete"></MenuItem>
+                            </ViewCell.ContextActions>
+                            <StackLayout BackgroundColor="#fff"
+                                     Orientation="Vertical" 
+                                     Spacing="5" 
+                                     Padding="10" 
+                                     HorizontalOptions="FillAndExpand" 
+                                     VerticalOptions="EndAndExpand">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding FirstName}" 
+                                   FontSize="20" 
+                                   TextColor="#000"></Label>
+                                    <Label Text="{Binding LastName}" 
+                                   FontSize="20" 
+                                   TextColor="#000"></Label>
+                                </StackLayout>
+                                <Label Text="{Binding Number}" 
+                                   FontSize="20"></Label>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
