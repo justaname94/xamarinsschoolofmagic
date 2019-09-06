@@ -27,7 +27,10 @@ namespace practice_3
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new ContactsView());
+            MainPage = new NavigationPage(new LoginView()) {
+                BarBackgroundColor = Color.DarkGray,
+                BarTextColor = Color.Black,
+                };
         }
 
         protected override void OnStart()

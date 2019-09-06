@@ -29,14 +29,11 @@ namespace practice_3.ViewModels
             {
                 actionCommand = "AddContact";
                 contact = new Contact();
-                ProfileImg = "contact_placeholder.png";
             } else
             {
                 actionCommand = "EditContact";
                 contact = current_contact;
                 ProfileImg = contact.PicturePath;
-                if (String.IsNullOrEmpty(contact.PicturePath))
-                    ProfileImg  = "contact_placeholder.png";
             }
 
             TakePicture = new Command(async () =>

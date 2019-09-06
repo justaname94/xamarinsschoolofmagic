@@ -7,22 +7,91 @@
              Title="New Contact"
              NavigationPage.HasNavigationBar="True"
              x:Class="practice_3.Views.EditContactView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="Save" Command="{Binding EditContactCommand}" />
+        <ToolbarItem IconImageSource="three_dots" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="10" Spacing="20">
-                <Image Source="{Binding ProfileImg}" HeightRequest="200" WidthRequest="200"></Image>
-                <StackLayout Orientation="Horizontal">
-                    <Button Text="Take a picture" Command="{Binding TakePicture}"></Button>
-                    <Button Text="Choose from gallery" Command="{Binding PickPictureFromGallery}"></Button>
+            <StackLayout>
+                <StackLayout BackgroundColor="#DBDCE0" 
+                             Orientation="Horizontal"
+                             MinimumHeightRequest="50">
+                    <Label FontSize="16" Text="Save To" FontAttributes="Bold" 
+                           Margin="8,18,0,0"></Label>
+                    <Frame CornerRadius="28" 
+                           BackgroundColor="White"
+                           HasShadow="False"
+                           Margin="8,8,8,8"
+                           Padding="8,8,8,8">
+                        <Label FontSize="16" Text="roniel_valdez@outlook.com" 
+                               MinimumHeightRequest="100"></Label>
+                    </Frame>
                 </StackLayout>
-                <Entry Text="{Binding contact.FirstName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="First name"/>
-                <Entry Text="{Binding contact.LastName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Last Name"/>
-                <Entry Text="{Binding contact.Company, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Company"/>
-                <Entry Text="{Binding contact.Number, Mode=TwoWay}" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
-                <Entry Text="{Binding contact.Email, Mode=TwoWay}" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email"/>
-                <Button Text="Add/Edit Contact"
-                    HorizontalOptions="Center"
-            Command="{Binding EditContactCommand}"></Button>
+                <Image Source="{Binding ProfileImg}"></Image>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Image Source="camera" HeightRequest="32" WidthRequest="32">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TakePicture}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image Source="gallery" HeightRequest="32" WidthRequest="32">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding PickPictureFromGallery}"></TapGestureRecognizer>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <Grid Padding="15,0,10,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="50" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="account" Grid.Row="0" Grid.Column="0" HeightRequest="32" WidthRequest="32" />
+                    <Entry Text="{Binding contact.FirstName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="First name" Grid.Row="0" Grid.Column="1"/>
+                    <Image Source="down" Grid.Row="0" Grid.Column="2" HeightRequest="32" WidthRequest="32" />
+                    <Entry Text="{Binding contact.LastName, Mode=TwoWay}" HorizontalOptions="FillAndExpand" Placeholder="Last Name" Grid.Row="1" Grid.Column="1"/>
+                    <Image Source="business" Grid.Row="2" Grid.Column="0" HeightRequest="32" WidthRequest="32" />
+                    <Entry Text="{Binding contact.Company, Mode=TwoWay}" Grid.Row="2" Grid.Column="1" HorizontalOptions="FillAndExpand" Placeholder="Company"/>
+                    <Image Source="phone" Grid.Row="3" Grid.Column="0" HeightRequest="32" WidthRequest="32" />
+                    <Entry Text="{Binding contact.Number, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Keyboard="Telephone" HorizontalOptions="FillAndExpand" Placeholder="Number"/>
+                    <Picker Title="Phone type" 
+                            Grid.Row="4" 
+                            Grid.Column="1"  
+                            HorizontalOptions="Start" 
+                            WidthRequest="80">
+                        <Picker.Items>
+                            <x:String>Personal</x:String>
+                            <x:String>Home</x:String>
+                            <x:String>School</x:String>
+                            <x:String>Company</x:String>
+                    </Picker.Items>
+                    </Picker>
+                    <Image Source="mail" Grid.Row="5" Grid.Column="0" HeightRequest="32" WidthRequest="32" />
+                    <Entry Text="{Binding contact.Email, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" Keyboard="Email" HorizontalOptions="FillAndExpand" Placeholder="Email"/>
+                    <Picker Title="Email type" 
+                            Grid.Row="6" 
+                            Grid.Column="1"  
+                            HorizontalOptions="Start" 
+                            WidthRequest="80">
+                        <Picker.Items>
+                            <x:String>Personal</x:String>
+                            <x:String>Home</x:String>
+                            <x:String>School</x:String>
+                            <x:String>Company</x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                </Grid>
+
+                <Label Text="More fields" Margin="15,0,0,0" TextColor="DarkBlue" FontSize="16"></Label>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
