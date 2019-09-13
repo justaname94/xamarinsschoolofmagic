@@ -15,8 +15,7 @@
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Vertical" Padding="10">
-                                <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" Padding="10">
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="Name:"></Label>
                                         <Label Text="{Binding Name}"
@@ -35,7 +34,6 @@
                                         TextColor="#000000"/>
                                     </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
