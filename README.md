@@ -1,14 +1,12 @@
-# Xamarin Contacts App
+# Xamarin API Consume example
 
-Cross-platform application for contact management. Some of the main features are
+Practice on consuming APIs directly from xamarin, using the refit package.
+The API use is the one made by myself called 'Dockpad' (WIP), which is a PRM or
+personal relationships manager, think of it as a CRM but instead of sales you
+manage your relationships and some personal facets of your life. The endpoint
+use (subject to change) is one for /activities/ where you manage some
+extracurricular activities and (not implemented yet) also with who you do them.
 
-- Add, edit and Delete contacts.
-- Contacts dashboard
-- Take picture/Pick photo from gallery for profile picture.
-- Quick-call button.
+## Image
 
-## Images
-
-|                           Add contact                            |                        Dashboard                         |                        Contact detail                         |
-| :--------------------------------------------------------------: | :------------------------------------------------------: | :-----------------------------------------------------------: |
-| ![alt text](https://i.imgur.com/sfQxc87.png "Add a new contact") | ![alt text](https://i.imgur.com/qJHOyPs.png "Dashboard") | ![alt text](https://i.imgur.com/tcLx1jm.png "Contact detail") |
+![alt text](https://i.imgur.com/nQtLgZZ.png "List activities")
