@@ -1,12 +1,19 @@
-# Xamarin API Consume example
+# Xamarin Paint App
 
-Practice on consuming APIs directly from xamarin, using the refit package.
-The API use is the one made by myself called 'Dockpad' (WIP), which is a PRM or
-personal relationships manager, think of it as a CRM but instead of sales you
-manage your relationships and some personal facets of your life. The endpoint
-use (subject to change) is one for /activities/ where you manage some
-extracurricular activities and (not implemented yet) also with who you do them.
+## Let's paint something!
 
-## Image
+This is a cross-platform (am I'm the only one who thinks saying "cross-platform" is really cool?) paint application, some of the main features are.
 
-![alt text](https://i.imgur.com/nQtLgZZ.png "List activities")
+- Select from 6 different colors! (would have been a breakthrough feature in 1990)
+- Undo, redo actions
+- Clear the whole canvas.
+- Upload your own picture and draw all over it.
+- Save your masterpieces to local storage.
+
+And always remember: if the app suddenly crashes, its not a bug, its a feature.
+
+## Images
+
+|                                 Draw anything                                 |                        Draw over images                         |
+| :---------------------------------------------------------------------------: | :-------------------------------------------------------------: |
+| ![alt text](https://i.imgur.com/Pg145u6.png "You can draw anything you want") | ![alt text](https://i.imgur.com/MlP6zkO.png "Draw over images") |

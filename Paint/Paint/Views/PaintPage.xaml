@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             x:Class="Paint.Views.PaintPage">
+    <ContentPage.Content>
+        <Grid Margin="0" Padding="0" RowSpacing="1" ColumnSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button BackgroundColor="Red"  Grid.Row="0" Grid.Column="0" Text="Red" TextColor="Transparent" Clicked="ChangeColor"/>
+            <Button BackgroundColor="Blue" Grid.Row="0" Text="Blue" TextColor="Transparent"  Grid.Column="1" Clicked="ChangeColor"/>
+            <Button BackgroundColor="Yellow" Grid.Row="0" Grid.Column="2" Text="Yellow" TextColor="Transparent" Clicked="ChangeColor"/>
+
+            <Button BackgroundColor="Green" Grid.Row="1" Grid.Column="0" Text="Green" TextColor="Transparent" Clicked="ChangeColor"/>
+            <Button BackgroundColor="Gray" Grid.Row="1" Grid.Column="1" Text="Gray" TextColor="Transparent" Clicked="ChangeColor"/>
+            <Button BackgroundColor="LightBlue" Grid.Row="1" Grid.Column="2" Text="LightBlue" TextColor="Transparent" Clicked="ChangeColor"/>
+
+            <Button Text="Clear" Grid.Row="2" Grid.Column="0" Clicked="Clear"></Button>
+            <Button Text="Undo" Grid.Row="2" Grid.Column="1" Clicked="Undo"></Button>
+            <Button Text="Redo" Grid.Row="2" Grid.Column="2" Clicked="Redo"></Button>
+
+            <Button Text="Load" Grid.Row="3" Grid.Column="0" Clicked="LoadImage"></Button>
+            <Button Text="Save" Grid.Row="3" Grid.Column="1" Clicked="SaveAsImage"></Button>
+
+
+            <views:SKCanvasView x:Name            ="PaintCanvas" 
+                            PaintSurface      ="OnPainting" 
+                            EnableTouchEvents ="True" 
+                            Touch             ="OnTouch"
+                            Grid.Row="4" Grid.ColumnSpan="3"/>
+        </Grid> 
+    </ContentPage.Content>
+</ContentPage>
