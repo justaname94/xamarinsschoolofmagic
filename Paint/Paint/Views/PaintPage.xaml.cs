@@ -76,25 +76,26 @@ namespace Paint.Views
             switch (e.ActionType)
             {
                 case SKTouchAction.Pressed:
-                    colorsLL.AddLast(currentColor);
+                    // colorsLL.AddLast(currentColor);
                     var p = new SKPath();
                     p.MoveTo(e.Location);
                     temporaryPaths[e.Id] = p;
                     break;
                 case SKTouchAction.Moved:
                     if (e.InContact)
+                        colorsLL.AddLast(currentColor);
                         temporaryPaths[e.Id].LineTo(e.Location);
+                        pathsLL.AddLast(temporaryPaths[e.Id]);
+                        // update the UI on the screen
+                        ((SKCanvasView)sender).InvalidateSurface();
+
                     break;
                 case SKTouchAction.Released:
-                    pathsLL.AddLast(temporaryPaths[e.Id]);
                     temporaryPaths.Remove(e.Id);
                     break;
             }
 
             e.Handled = true;
-
-            // update the UI on the screen
-            ((SKCanvasView)sender).InvalidateSurface();
         }
 
         private void ChangeColor(object sender, EventArgs e)
