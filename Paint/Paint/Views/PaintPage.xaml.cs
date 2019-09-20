@@ -51,19 +51,8 @@ namespace Paint.Views
 
             if (libraryBitmap != null)
             {
-                float scale = Math.Min((float)info.Width / libraryBitmap.Width,
-                               info.Height / 3f / libraryBitmap.Height);
-
-                float left = (info.Width - scale * libraryBitmap.Width) / 2;
-                float top = (info.Height / 3 - scale * libraryBitmap.Height) / 2;
-                float right = left + scale * libraryBitmap.Width;
-                float bottom = top + scale * libraryBitmap.Height;
-                SKRect rect = new SKRect(left, top, right, bottom);
-                // rect.Offset(0, 2 * info.Height / 3);
-
                 canvas.DrawBitmap(libraryBitmap,
                   new SKRect(0, 0, info.Width, info.Height));
-
             }
             int i = 0;
             var curr = colorsLL.First;
