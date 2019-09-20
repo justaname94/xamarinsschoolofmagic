@@ -24,6 +24,7 @@ namespace Paint.Views
         }
 
         private LinkedList<SKPath> changesLL= new LinkedList<SKPath>();
+        private LinkedList<SKColor> changesColorsLL = new LinkedList<SKColor>();
         private LinkedList<SKPath> pathsLL= new LinkedList<SKPath>();
         private LinkedList<SKColor> colorsLL = new LinkedList<SKColor>();
 
@@ -76,16 +77,19 @@ namespace Paint.Views
             switch (e.ActionType)
             {
                 case SKTouchAction.Pressed:
-                    // colorsLL.AddLast(currentColor);
                     var p = new SKPath();
+                    colorsLL.AddLast(currentColor);
                     p.MoveTo(e.Location);
                     temporaryPaths[e.Id] = p;
                     break;
                 case SKTouchAction.Moved:
                     if (e.InContact)
-                        colorsLL.AddLast(currentColor);
                         temporaryPaths[e.Id].LineTo(e.Location);
+                        colorsLL.AddLast(currentColor);
                         pathsLL.AddLast(temporaryPaths[e.Id]);
+                        if (pathsLL.Last.Previous != null && pathsLL.Last.Previous.Value == pathsLL.Last.Value)
+                            pathsLL.RemoveLast();
+                            colorsLL.RemoveLast();
                         // update the UI on the screen
                         ((SKCanvasView)sender).InvalidateSurface();
 
@@ -151,6 +155,11 @@ namespace Paint.Views
                 var node = pathsLL.Last;
                 pathsLL.Remove(pathsLL.Last);
                 changesLL.AddLast(node);
+
+                var colorNode = colorsLL.Last;
+                colorsLL.Remove(colorsLL.Last);
+                changesColorsLL.AddLast(colorNode);
+
                 PaintCanvas.InvalidateSurface();
             } catch (System.ArgumentException ex)
             {
@@ -165,6 +174,10 @@ namespace Paint.Views
                 var node = changesLL.Last;
                 changesLL.Remove(changesLL.Last);
                 pathsLL.AddLast(node);
+
+                var colorNode = changesColorsLL.Last;
+                changesColorsLL.Remove(changesColorsLL.Last);
+                colorsLL.AddLast(colorNode);
                 PaintCanvas.InvalidateSurface();
             }
             catch (System.ArgumentNullException ex)
