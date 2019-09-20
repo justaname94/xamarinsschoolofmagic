@@ -8,7 +8,7 @@ namespace Paint.Services
 {
     public interface IPhotoLibrary
     {
-       // Task<Stream> PickPhotoAsync();
+        Task<Stream> PickPhotoAsync();
 
         Task<bool> SavePhotoAsync(byte[] data, string folder, string filename);
     }

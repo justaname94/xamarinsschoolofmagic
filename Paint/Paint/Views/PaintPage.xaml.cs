@@ -40,17 +40,34 @@ namespace Paint.Views
         };
         private SKColor currentColor = SKColors.Red;
         private SKImage canvasImg = null;
+        SKBitmap libraryBitmap;
 
         private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
         {
-            
+            var info = e.Info;  
             var surface = e.Surface;
             var canvas = surface.Canvas;
             canvas.Clear(SKColors.White);
 
+            if (libraryBitmap != null)
+            {
+                float scale = Math.Min((float)info.Width / libraryBitmap.Width,
+                               info.Height / 3f / libraryBitmap.Height);
+
+                float left = (info.Width - scale * libraryBitmap.Width) / 2;
+                float top = (info.Height / 3 - scale * libraryBitmap.Height) / 2;
+                float right = left + scale * libraryBitmap.Width;
+                float bottom = top + scale * libraryBitmap.Height;
+                SKRect rect = new SKRect(left, top, right, bottom);
+                // rect.Offset(0, 2 * info.Height / 3);
+
+                canvas.DrawBitmap(libraryBitmap,
+                  new SKRect(0, 0, info.Width, info.Height));
+
+            }
             int i = 0;
             var curr = colorsLL.First;
-            foreach (var touchPath in pathsLL )
+            foreach (var touchPath in pathsLL)
             {
                 var stroke = new SKPaint
                 {
@@ -103,13 +120,14 @@ namespace Paint.Views
             pathsLL.Clear();
             colorsLL.Clear();
             changesLL.Clear();
+            libraryBitmap = null;
             PaintCanvas.InvalidateSurface();
         }
 
         private async void SaveAsImage(object sender, EventArgs e)
         {
             // First check for permissions (thanks Montemagno ;) )
-            PermissionStatus status = await CrossPermissions.Current.CheckPermissionStatusAsync<CalendarPermission>();
+            PermissionStatus status = await CrossPermissions.Current.CheckPermissionStatusAsync<StoragePermission>();
 
             if (status != PermissionStatus.Granted) {
                 
@@ -158,10 +176,25 @@ namespace Paint.Views
                 changesLL.Remove(changesLL.Last);
                 pathsLL.AddLast(node);
                 PaintCanvas.InvalidateSurface();
-            } catch (System.ArgumentNullException ex )
+            }
+            catch (System.ArgumentNullException ex)
             {
                 // The user expects anything to happens as they have nothing to redo
-            }                
+            }
+        }
+
+        private async void LoadImage(object sender, EventArgs e)
+        {
+            IPhotoLibrary photoLibrary = DependencyService.Get<IPhotoLibrary>();
+
+            using (Stream stream = await photoLibrary.PickPhotoAsync())
+            {
+                if (stream != null)
+                {
+                    libraryBitmap = SKBitmap.Decode(stream);
+                    PaintCanvas.InvalidateSurface();
+                }
+            }
         }
     }
 }

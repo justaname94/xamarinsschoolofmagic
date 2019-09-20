@@ -21,6 +21,25 @@ namespace Paint.Droid.Services
 {
     public class PhotoLibraryService : IPhotoLibrary
     {
+         public Task<System.IO.Stream> PickPhotoAsync()
+        {
+            // Define the Intent for getting images
+            Intent intent = new Intent();
+            intent.SetType("image/*");
+            intent.SetAction(Intent.ActionGetContent);
+
+            // Start the picture-picker activity (resumes in MainActivity.cs)
+            MainActivity.Instance.StartActivityForResult(
+                Intent.CreateChooser(intent, "Select Picture"),
+                MainActivity.PickImageId);
+
+            // Save the TaskCompletionSource object as a MainActivity property
+            MainActivity.Instance.PickImageTaskCompletionSource = new TaskCompletionSource<System.IO.Stream>();
+
+            // Return Task object
+            return MainActivity.Instance.PickImageTaskCompletionSource.Task;
+        }
+
         public async Task<bool> SavePhotoAsync(byte[] data, string folder, string filename)
         {
             try

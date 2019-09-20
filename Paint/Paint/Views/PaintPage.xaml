@@ -32,7 +32,8 @@
             <Button Text="Undo" Grid.Row="2" Grid.Column="1" Clicked="Undo"></Button>
             <Button Text="Redo" Grid.Row="2" Grid.Column="2" Clicked="Redo"></Button>
 
-            <Button Text="Save" Grid.Row="3" Grid.Column="0" Clicked="SaveAsImage"></Button>
+            <Button Text="Load" Grid.Row="3" Grid.Column="0" Clicked="LoadImage"></Button>
+            <Button Text="Save" Grid.Row="3" Grid.Column="1" Clicked="SaveAsImage"></Button>
 
 
             <views:SKCanvasView x:Name            ="PaintCanvas" 
