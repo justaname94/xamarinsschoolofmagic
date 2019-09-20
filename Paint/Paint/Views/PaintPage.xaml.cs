@@ -1,4 +1,7 @@
-﻿using SkiaSharp;
+﻿using Paint.Services;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using System;
 using System.Collections.Generic;
@@ -20,9 +23,9 @@ namespace Paint.Views
             InitializeComponent();
         }
 
-        private List<SKPath> paths = new List<SKPath>();
-        private List<SKPath> changesPaths = new List<SKPath>();
-
+        private LinkedList<SKPath> changesLL= new LinkedList<SKPath>();
+        private LinkedList<SKPath> pathsLL= new LinkedList<SKPath>();
+        private LinkedList<SKColor> colorsLL = new LinkedList<SKColor>();
 
         private Dictionary<long, SKPath> temporaryPaths = new Dictionary<long, SKPath>();
         Dictionary<string, SKColor> colors = new Dictionary<string, SKColor>()
@@ -35,27 +38,29 @@ namespace Paint.Views
             {"LightBlue", SKColors.LightBlue }
 
         };
-        private List<SKColor> colorsList = new List<SKColor>();
         private SKColor currentColor = SKColors.Red;
         private SKImage canvasImg = null;
 
-            private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
+        private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
         {
             
             var surface = e.Surface;
             var canvas = surface.Canvas;
             canvas.Clear(SKColors.White);
 
-            for (int i = 0; i < paths.Count; i++)
+            int i = 0;
+            var curr = colorsLL.First;
+            foreach (var touchPath in pathsLL )
             {
-                var touchPath = paths[i];
                 var stroke = new SKPaint
                 {
-                    Color = colorsList[i],
+                    Color = curr.Value,
                     StrokeWidth = 5,
                     Style = SKPaintStyle.Stroke
                 };
                 canvas.DrawPath(touchPath, stroke);
+                i++;
+                curr = curr.Next;
             }
             canvasImg = surface.Snapshot();
         }
@@ -65,7 +70,7 @@ namespace Paint.Views
             switch (e.ActionType)
             {
                 case SKTouchAction.Pressed:
-                    colorsList.Add(currentColor);
+                    colorsLL.AddLast(currentColor);
                     var p = new SKPath();
                     p.MoveTo(e.Location);
                     temporaryPaths[e.Id] = p;
@@ -75,7 +80,7 @@ namespace Paint.Views
                         temporaryPaths[e.Id].LineTo(e.Location);
                     break;
                 case SKTouchAction.Released:
-                    paths.Add(temporaryPaths[e.Id]);
+                    pathsLL.AddLast(temporaryPaths[e.Id]);
                     temporaryPaths.Remove(e.Id);
                     break;
             }
@@ -95,11 +100,68 @@ namespace Paint.Views
 
         private void Clear(object sender, EventArgs e)
         {
-            paths.Clear();
-            colorsList.Clear();
+            pathsLL.Clear();
+            colorsLL.Clear();
+            changesLL.Clear();
             PaintCanvas.InvalidateSurface();
         }
 
+        private async void SaveAsImage(object sender, EventArgs e)
+        {
+            // First check for permissions (thanks Montemagno ;) )
+            PermissionStatus status = await CrossPermissions.Current.CheckPermissionStatusAsync<CalendarPermission>();
 
+            if (status != PermissionStatus.Granted) {
+                
+                status = await CrossPermissions.Current.RequestPermissionAsync<StoragePermission>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                SKData data = canvasImg.Encode();
+                DateTime dt = DateTime.Now;
+                string filename = String.Format("FingerPaint-{0:D4}{1:D2}{2:D2}-{3:D2}{4:D2}{5:D2}{6:D3}.png",
+                                                dt.Year, dt.Month, dt.Day, dt.Hour, dt.Minute, dt.Second, dt.Millisecond);
+
+                IPhotoLibrary photoLibrary = DependencyService.Get<IPhotoLibrary>();
+                bool result = await photoLibrary.SavePhotoAsync(data.ToArray(), "FingerPaint", filename);
+
+                if (!result)
+                {
+                    await DisplayAlert("FingerPaint", "Artwork could not be saved. Sorry!", "OK");
+                }
+            } else
+            {
+                await DisplayAlert("Cannot save drawing", "Storage permission needed", "ok");
+            }
+                    
+        }
+
+        private void Undo(object sender, EventArgs e)
+        {
+            try {
+                var node = pathsLL.Last;
+                pathsLL.Remove(pathsLL.Last);
+                changesLL.AddLast(node);
+                PaintCanvas.InvalidateSurface();
+            } catch (System.ArgumentException ex)
+            {
+                // The user expects anything to happens as they have nothing to undo
+            }
+        }
+
+        private void Redo(object sender, EventArgs e)
+        {
+            try
+            {
+                var node = changesLL.Last;
+                changesLL.Remove(changesLL.Last);
+                pathsLL.AddLast(node);
+                PaintCanvas.InvalidateSurface();
+            } catch (System.ArgumentNullException ex )
+            {
+                // The user expects anything to happens as they have nothing to redo
+            }                
+        }
     }
 }
