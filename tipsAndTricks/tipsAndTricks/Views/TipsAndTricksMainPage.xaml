@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:helper="clr-namespace:tipsAndTricks.Helpers"
+             mc:Ignorable="d"
+             x:Class="tipsAndTricks.Views.TipsAndTricksMainPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Content>
+        <StackLayout Padding="10" Margin="10">
+            <Label VerticalOptions="Center" FontSize="18" Text="{Binding Name, StringFormat='Hello {0}'}"/>
+            <Entry Text="{Binding Name, Mode=TwoWay}">
+                <Entry.Triggers>
+                    <Trigger TargetType="Entry"
+                             Property="IsFocused"
+                             Value="True">
+                        <Setter Property="BackgroundColor" Value="Green"/>
+                    </Trigger>
+                </Entry.Triggers>
+            </Entry>
+            <Label VerticalOptions="Center" FontSize="18" Text="{Binding Source={x:Static helper:Settings.Username}}"></Label>
+            <Label VerticalOptions="Center" FontSize="18" Text="Using line breaks to &#10; improve readability"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>  

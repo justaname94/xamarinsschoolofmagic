@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{266BDB4C-C361-4738-9318-0EC5A9DAC6FC}</ProjectGuid>
+    <ProjectGuid>{39B3975D-A19F-4FB9-BB1F-688D5F8825B1}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Paint.iOS</RootNamespace>
+    <RootNamespace>tipsAndTricks.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>Paint.iOS</AssemblyName>
+    <AssemblyName>tipsAndTricks.iOS</AssemblyName>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
   </PropertyGroup>
@@ -62,7 +62,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Services\PhotoLibraryService.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -126,9 +125,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Paint\Paint.csproj">
-      <Project>{D50DE09B-1A25-405A-96AC-7D5AAC36F780}</Project>
-      <Name>Paint</Name>
+    <ProjectReference Include="..\tipsAndTricks\tipsAndTricks.csproj">
+      <Project>{574F8C32-B1E1-4F2B-918D-245D4722F257}</Project>
+      <Name>tipsAndTricks</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -1,19 +1,10 @@
-# Xamarin Paint App
+# Xamarin Tips and Tricks
 
-## Let's paint something!
+Extremely simple project applying several good tips and tricks in xamarin projects,
+the tips and tricks used are:
 
-This is a cross-platform (am I'm the only one who thinks saying "cross-platform" is really cool?) paint application, some of the main features are.
-
-- Select from 6 different colors! (would have been a breakthrough feature in 1990)
-- Undo, redo actions
-- Clear the whole canvas.
-- Upload your own picture and draw all over it.
-- Save your masterpieces to local storage.
-
-And always remember: if the app suddenly crashes, its not a bug, its a feature.
-
-## Images
-
-|                                 Draw anything                                 |                        Draw over images                         |
-| :---------------------------------------------------------------------------: | :-------------------------------------------------------------: |
-| ![alt text](https://i.imgur.com/Pg145u6.png "You can draw anything you want") | ![alt text](https://i.imgur.com/MlP6zkO.png "Draw over images") |
+1. Using string format
+2. Using static properties
+3. Using attached properties
+4. Triggers
+5. Line breaks

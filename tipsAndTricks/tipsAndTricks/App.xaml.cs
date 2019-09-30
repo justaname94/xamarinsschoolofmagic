@@ -1,9 +1,9 @@
-﻿using Paint.Views;
-using System;
+﻿using System;
+using tipsAndTricks.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Paint
+namespace tipsAndTricks
 {
     public partial class App : Application
     {
@@ -11,7 +11,7 @@ namespace Paint
         {
             InitializeComponent();
 
-            MainPage = new PaintPage();
+            MainPage = new NavigationPage(new TipsAndTricksMainPage());
         }
 
         protected override void OnStart()

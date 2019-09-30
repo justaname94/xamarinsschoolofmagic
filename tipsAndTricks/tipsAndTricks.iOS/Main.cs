@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace Paint.iOS
+namespace tipsAndTricks.iOS
 {
     public class Application
     {
